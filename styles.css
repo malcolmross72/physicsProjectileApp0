@@ -1,38 +1,90 @@
-/* General page styling */
+/* General font and spacing */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     padding: 20px;
+    background-color: #121212;
+    color: #f0f0f0; /* General light text */
 }
 
 /* Headers */
 h1, h2 {
-    color: #333;
+    color: #ffffff;
     border-bottom: 2px solid #666;
     padding-bottom: 5px;
+    margin-top: 25px;
 }
 
-/* Table styling */
+/* Special black headers */
+h2.black-heading {
+    color: #000 !important;
+}
+
+/* Labels */
+label {
+    color: #e0e0e0;
+    font-weight: bold;
+}
+
+/* Tables */
 table {
     border-collapse: collapse;
     width: 100%;
-    background-color: white;
+    margin-top: 15px;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    box-shadow: 0 0 5px #000;
 }
-table, th, td {
-    border: 1px solid black;
+
+th, td {
+    border: 1px solid #555;
     padding: 10px;
     text-align: left;
 }
 
-/* Styling for images and videos */
+th {
+    background-color: #444;
+    font-weight: bold;
+}
+
+/* Form inputs and buttons */
+input[type="number"],
+input[type="range"],
+button {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #555;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Highlighted text */
+mark {
+    background-color: yellow;
+    color: #000;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* Image and video styles */
 img, video {
     display: block;
     margin: 10px auto;
     max-width: 100%;
     border-radius: 10px;
+    box-shadow: 0 0 8px #000;
 }
 
-/* Highlighted equations */
-mark {
-    background-color: yellow;
+/* Footer */
+small {
+    color: #000;
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
 }

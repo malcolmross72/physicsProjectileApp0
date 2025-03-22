@@ -4,68 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Physics Application</title>
+
+    <!-- jQuery Mobile CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+
+    <!-- Optional: your custom stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- jQuery Core & jQuery Mobile -->
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+    <script>
+        function calculateFinalVelocity() {
+            var u = parseFloat(document.getElementById("initialVelocity").value);
+            var a = parseFloat(document.getElementById("acceleration").value);
+            var t = parseFloat(document.getElementById("time").value);
+
+            if (isNaN(u) || isNaN(a) || isNaN(t)) {
+                document.getElementById("output").innerHTML = "Please enter valid numbers.";
+                return;
+            }
+
+            var v = u + (a * t);
+
+            document.getElementById("output").innerHTML =
+                `<table border='1' style='width: 100%; text-align: left;'>
+                    <tr><th>Variable</th><th>Value</th></tr>
+                    <tr><td>Initial Velocity (u)</td><td>${u} m/s</td></tr>
+                    <tr><td>Acceleration (a)</td><td>${a} m/s²</td></tr>
+                    <tr><td>Time (t)</td><td>${t} sec</td></tr>
+                    <tr><td><strong>Final Velocity (v)</strong></td><td><strong>${v.toFixed(2)} m/s</strong></td></tr>
+                </table>`;
+        }
+    </script>
 </head>
+
 <body>
-    <h1>Projectiles</h1>
+<div data-role="page">
 
-    <p>In the 1600s, armies used equations of motion to calculate velocities and angles for firing missiles to hit targets. While a quarterback does not do explicit calculations using equations of motion, a computerized football game will certainly need to do these calculations.</p>
+    <!-- HEADER -->
+    <div data-role="header">
+        <h1>Physics Application</h1>
+        <div data-role="navbar">
+            <ul>
+                <li><a href="information.html">Information</a></li>
+                <li><a href="index.html" class="ui-btn-active ui-state-persist">Interface</a></li>
+            </ul>
+        </div>
 
-    <h2>Abbreviations</h2>
-    <ul>
-        <li>meters, <em>m</em></li>
-        <li>kilometers, <em>km</em>: 1000 meters make up a kilometer</li>
-        <li>meters per second, <em>m/s</em>: units for measuring distance</li>
-        <li>meters per second squared, <em>m/s<sup>2</sup></em>: units for measuring acceleration</li>
-    </ul>
+    <!-- CONTENT -->
+    <div data-role="content">
+        <h2>Projectiles</h2>
+        <p>In the 1600s, armies used equations of motion to calculate velocities and angles for firing missiles to hit targets.</p>
 
-    <h2>Notations</h2>
-    <table border="1">
-        <tr>
-            <th>Abbreviation</th>
-            <th>Meaning</th>
-        </tr>
-        <tr>
-            <td><em>u</em></td>
-            <td>Initial velocity</td>
-        </tr>
-        <tr>
-            <td><em>v</em></td>
-            <td>Final velocity</td>
-        </tr>
-        <tr>
-            <td><em>a</em></td>
-            <td>Acceleration</td>
-        </tr>
-        <tr>
-            <td><em>t</em></td>
-            <td>Time</td>
-        </tr>
-        <tr>
-            <td><em>s</em></td>
-            <td>Distance</td>
-        </tr>
-    </table>
+        <h2>Abbreviations</h2>
+        <ul>
+            <li>meters, <em>m</em></li>
+            <li>kilometers, <em>km</em></li>
+            <li>meters per second, <em>m/s</em></li>
+            <li>meters per second squared, <em>m/s<sup>2</sup></em></li>
+        </ul>
 
-    <h2>Equations</h2>
-    <ol>
-        <li><mark>a = (v - u) / t</mark>, which can be arranged to get the following equation</li>
-        <li><mark>t = (v - u) / a</mark>, which can be further arranged as</li>
-        <li><mark>v = u + a * t</mark></li>
-        <li><mark>s = u * t + 0.5 * a * t<sup>2</sup></mark>, another useful equation of motion</li>
-    </ol>
+        <h2>Notations</h2>
+        <table border="1" style="width: 100%;">
+            <tr><th>Abbreviation</th><th>Meaning</th></tr>
+            <tr><td><em>u</em></td><td>Initial velocity</td></tr>
+            <tr><td><em>v</em></td><td>Final velocity</td></tr>
+            <tr><td><em>a</em></td><td>Acceleration</td></tr>
+            <tr><td><em>t</em></td><td>Time</td></tr>
+            <tr><td><em>s</em></td><td>Distance</td></tr>
+        </table>
 
-    <h2>Physics in Action</h2>
-    <figure>
-        <img src="media/cannon.jpg" alt="A projectile fired from a cannon" width="400">
-        <figcaption>Fig. 1 - A Projectile Fired From a Cannon</figcaption>
-    </figure>
+        <h2>Equations of Motion</h2>
+        <ol>
+            <li><mark>v = u + a * t</mark></li>
+            <li><mark>s = u * t + 0.5 * a * t<sup>2</sup></mark></li>
+        </ol>
 
-    <h2>Watch a Simulation</h2>
-    <video controls>
-        <source src="media/projectileVid.mp4" type="video/mp4">
-        <source src="media/projectileVid.ogg" type="video/ogg">
-        Your browser does not support the video tag.
-    </video>
+        <h2>Calculate Final Velocity</h2>
+        <label for="initialVelocity">Initial Velocity (u in m/s):</label>
+        <input type="number" id="initialVelocity" placeholder="Enter u">
 
+        <label for="acceleration">Acceleration (a in m/s²):</label>
+        <input type="number" id="acceleration" placeholder="Enter a">
+
+        <label for="time">Time (t in seconds):</label>
+        <input type="number" id="time" placeholder="Enter t">
+
+        <button onclick="calculateFinalVelocity()">Calculate</button>
+
+        <div id="output" style="margin-top: 20px;"></div>
+
+        <h2>Watch a Simulation</h2>
+        <video controls width="100%">
+            <source src="media/projectileVid.mp4" type="video/mp4">
+            <source src="media/projectileVid.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- FOOTER -->
+    <div data-role="footer">
+        <h4>Physics Learning Center</h4>
+    </div>
+
+</div>
 </body>
 </html>
