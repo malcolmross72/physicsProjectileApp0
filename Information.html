@@ -29,22 +29,31 @@
       </div>
     </div>
 
-    <!-- Content -->
-    <div data-role="content" data-theme="b">
-        <h2 class="black-heading">Converting Fluid Measurements</h2>
-      <label for="gallons">Enter the quantity in gallons:</label>
-      <input type="range" name="gallons" id="gallons" min="0" max="20" value="0" data-highlight="true" />
-
-      <button onclick="display()">Display</button>
-
-      <table>
-        <tr>
-          <td><strong>Quantity Entered:</strong></td>
-          <td id="gallonsDisplay">0</td>
-          <td>gallons</td>
-        </tr>
-      </table>
-    </div>
+     <!-- Content -->
+     <div data-role="content" data-theme="b">
+        <h2 class="black-heading">Convert Fluid Measurements</h2>
+  
+        <label for="fluidAmount">Enter fluid amount:</label>
+        <input type="number" id="fluidAmount" placeholder="Max: 1000 gal or 4000 l" min="0" />
+  
+        <fieldset data-role="controlgroup">
+          <legend>Convert from:</legend>
+          <input type="radio" name="convertType" id="toLitres" value="toLitres" checked />
+          <label for="toLitres">Gallons to Litres</label>
+  
+          <input type="radio" name="convertType" id="toGallons" value="toGallons" />
+          <label for="toGallons">Litres to Gallons</label>
+        </fieldset>
+  
+        <button onclick="convert()">Convert</button>
+  
+        <table style="margin-top: 15px;">
+          <tr>
+            <td><strong>Converted Value:</strong></td>
+            <td id="result">0</td>
+          </tr>
+        </table>
+      </div>
 
     <!-- Footer -->
     <div data-role="footer" data-theme="b" class="footer-highlight">
